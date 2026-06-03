@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academics – מתן לנדסמן | כתיבה אקדמית, עריכה, תרגום והוראה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Heebo', sans-serif; direction: rtl; background: #0d1b2e; color: #e8e0d0; overflow-x: hidden; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(13,27,46,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,175,80,0.15); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: 1px; text-decoration: none; }
+  .logo span { color: #d4af50; font-style: italic; font-weight: 300; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(232,224,208,0.75); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: #d4af50; }
+  .nav-btns { display: flex; gap: 0.75rem; }
+  .btn-wa { background: #25d366; color: #fff; border: none; padding: 8px 18px; border-radius: 8px; font-family: 'Heebo', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background 0.2s; text-decoration: none; }
+  .btn-wa:hover { background: #1db954; }
+  .btn-mail { background: transparent; color: #d4af50; border: 1.5px solid #d4af50; padding: 8px 18px; border-radius: 8px; font-family: 'Heebo', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .btn-mail:hover { background: #d4af50; color: #0d1b2e; }
+
+  .hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,175,80,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,175,80,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,80,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,175,80,0.1); border: 1px solid rgba(212,175,80,0.3); color: #d4af50; font-size: 0.8rem; padding: 6px 16px; border-radius: 100px; margin-bottom: 2rem; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #d4af50; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: #fff; }
+  h1 em { color: #d4af50; font-style: italic; font-weight: 300; }
+  .hero-sub { font-size: 1.1rem; color: rgba(232,224,208,0.7); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.8; }
+  .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .cta-primary { background: #25d366; color: #fff; border: none; padding: 14px 28px; border-radius: 10px; font-family: 'Heebo', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; text-decoration: none; }
+  .cta-primary:hover { background: #1db954; transform: translateY(-2px); }
+  .cta-secondary { background: transparent; color: #d4af50; border: 2px solid #d4af50; padding: 14px 28px; border-radius: 10px; font-family: 'Heebo', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
+  .cta-secondary:hover { background: #d4af50; color: #0d1b2e; transform: translateY(-2px); }
+  .cta-ghost { background: transparent; color: rgba(232,224,208,0.7); border: 1.5px solid rgba(232,224,208,0.2); padding: 14px 28px; border-radius: 10px; font-family: 'Heebo', sans-serif; font-size: 1rem; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
+  .cta-ghost:hover { border-color: rgba(232,224,208,0.5); color: #e8e0d0; }
+
+  .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(212,175,80,0.15); border-top: 1px solid rgba(212,175,80,0.15); border-bottom: 1px solid rgba(212,175,80,0.15); }
+  .stat { background: #0d1b2e; padding: 2rem 1rem; text-align: center; }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: #d4af50; line-height: 1; }
+  .stat-label { font-size: 0.8rem; color: rgba(232,224,208,0.55); margin-top: 6px; }
+
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 0.75rem; font-weight: 600; color: #d4af50; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+  .section-sub { color: rgba(232,224,208,0.6); font-size: 1rem; line-height: 1.8; max-width: 600px; }
+  .divider { width: 48px; height: 3px; background: linear-gradient(90deg,#d4af50,transparent); border-radius: 2px; margin: 1rem 0 2.5rem; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+  .service-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,80,0.15); border-radius: 16px; padding: 1.75rem; transition: all 0.3s; }
+  .service-card:hover { background: rgba(212,175,80,0.06); border-color: rgba(212,175,80,0.35); transform: translateY(-4px); }
+  .service-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .service-card h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.85rem; color: rgba(232,224,208,0.6); line-height: 1.7; }
+
+  .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,80,0.2); border-radius: 20px; padding: 2.5rem; }
+  .about-name { font-size: 1.6rem; font-weight: 800; color: #fff; }
+  .about-title-role { color: #d4af50; font-size: 0.9rem; margin-top: 4px; margin-bottom: 1.5rem; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { background: rgba(212,175,80,0.1); border: 1px solid rgba(212,175,80,0.25); color: #d4af50; font-size: 0.75rem; padding: 4px 12px; border-radius: 100px; }
+  .about-text { color: rgba(232,224,208,0.7); line-height: 1.9; font-size: 0.95rem; }
+  .about-text p { margin-bottom: 1rem; }
+
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+  .testi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,80,0.15); border-radius: 16px; padding: 1.75rem; }
+  .stars { color: #d4af50; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { color: rgba(232,224,208,0.75); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1.25rem; font-style: italic; }
+  .testi-author { font-size: 0.8rem; font-weight: 600; color: #fff; }
+  .testi-role { font-size: 0.75rem; color: rgba(232,224,208,0.45); }
+
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+  .step { text-align: center; padding: 1.5rem 1rem; }
+  .step-num { width: 48px; height: 48px; border-radius: 50%; background: rgba(212,175,80,0.1); border: 2px solid rgba(212,175,80,0.4); color: #d4af50; font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+  .step h4 { color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step p { color: rgba(232,224,208,0.55); font-size: 0.82rem; line-height: 1.7; }
+
+  .cta-section { text-align: center; padding: 5rem 2rem; background: rgba(212,175,80,0.04); border-top: 1px solid rgba(212,175,80,0.1); border-bottom: 1px solid rgba(212,175,80,0.1); }
+  .cta-section h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(232,224,208,0.6); font-size: 1rem; margin-bottom: 2rem; }
+  .contact-methods { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .contact-item { display: flex; align-items: center; gap: 8px; color: rgba(232,224,208,0.6); font-size: 0.85rem; }
+  .contact-item a { color: #d4af50; text-decoration: none; }
+
+  footer { background: rgba(0,0,0,0.3); border-top: 1px solid rgba(212,175,80,0.1); padding: 2rem; text-align: center; }
+  .footer-logo { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 1rem; display: block; text-decoration: none; }
+  .footer-logo span { color: #d4af50; font-style: italic; font-weight: 300; }
+  footer p { font-size: 0.78rem; color: rgba(232,224,208,0.3); }
+
+  .cta-form { background: linear-gradient(135deg, #d4af50, #b8942e); color: #0d1b2e; border: none; padding: 14px 28px; border-radius: 10px; font-family: 'Heebo', sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; text-decoration: none; box-shadow: 0 4px 20px rgba(212,175,80,0.35); }
+  .cta-form:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,175,80,0.5); filter: brightness(1.08); }
+  .form-section { text-align: center; padding: 4rem 2rem; background: rgba(212,175,80,0.03); border-top: 1px solid rgba(212,175,80,0.12); }
+  .form-section h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: #fff; margin-bottom: 0.75rem; }
+  .form-section p { color: rgba(232,224,208,0.6); font-size: 0.95rem; margin-bottom: 1.75rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .form-trust { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.25rem; }
+  .form-trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: rgba(232,224,208,0.5); }
+  .form-trust-item span { color: #d4af50; font-size: 1rem; }
+  .wa-float { position: fixed; bottom: 2rem; left: 2rem; width: 54px; height: 54px; border-radius: 50%; background: #25d366; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.2s; }
+  .wa-float:hover { transform: scale(1.1); }
+  .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+  .contact-info-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(232,224,208,0.5); margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(212,175,80,0.15); }
+  .contact-info-row a { color: #d4af50; text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .stats { grid-template-columns: repeat(2,1fr); }
+    .about-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+    .hero { min-height: 80vh; }
+    .contact-info-row { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Acad<span>emics</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">שירותים</a></li>
+    <li><a href="#about">אודות</a></li>
+    <li><a href="#testimonials">המלצות</a></li>
+    <li><a href="#contact">צור קשר</a></li>
+  </ul>
+  <div class="nav-btns">
+    <a href="https://docs.google.com/forms/d/1l4F7jGzwtxaDgrUHcwOjLGVCWWAP_CWc9bsCJZM57YI/viewform" target="_blank" class="btn-mail" style="background:#d4af50;color:#0d1b2e;border-color:#d4af50;">📋 השאר פרטים</a>
+    <a href="https://wa.me/972522951553" target="_blank" class="btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.541 5.873L.073 23.5a.5.5 0 0 0 .615.611l5.758-1.502A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.499-5.24-1.371l-.375-.216-3.887 1.014 1.035-3.77-.237-.39A9.942 9.942 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      וואטסאפ
+    </a>
+    <a href="mailto:mlandesman1@gmail.com" class="btn-mail">שלח פנייה</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="badge"><span class="badge-dot"></span>מתן לנדסמן · +14 שנות ניסיון אקדמי</div>
+    <h1>הידע שלך ראוי<br>לניסוח <em>מושלם.</em></h1>
+    <p class="hero-sub">כתיבה אקדמית, עריכה, תרגום, סטטיסטיקה והוראה פרטית — מגישה לתוצאות שתהיה גאה בהן. עם מחויבות אישית מלאה לכל פרויקט.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/972522951553" target="_blank" class="cta-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.541 5.873L.073 23.5a.5.5 0 0 0 .615.611l5.758-1.502A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.499-5.24-1.371l-.375-.216-3.887 1.014 1.035-3.77-.237-.39A9.942 9.942 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        שלח הודעה בוואטסאפ
+      </a>
+      <a href="mailto:mlandesman1@gmail.com" class="cta-secondary">שלח פנייה במייל ←</a>
+      <a href="https://docs.google.com/forms/d/1l4F7jGzwtxaDgrUHcwOjLGVCWWAP_CWc9bsCJZM57YI/viewform" target="_blank" class="cta-form">
+        📋 השאר פרטים — קבל הצעת מחיר
+      </a>
+      <a href="#services" class="cta-ghost">הכר את השירותים</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">+14</div><div class="stat-label">שנות ניסיון אקדמי</div></div>
+  <div class="stat"><div class="stat-num">+500</div><div class="stat-label">עבודות שהוגשו בהצלחה</div></div>
+  <div class="stat"><div class="stat-num">98%</div><div class="stat-label">שביעות רצון לקוחות</div></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">זמינות ומענה מהיר</div></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">השירותים שלי</div>
+  <h2 class="section-title">מה אני מציע?</h2>
+  <div class="divider"></div>
+  <p class="section-sub">מגוון שלם של שירותים אקדמיים מותאמים אישית — מהרעיון הראשוני ועד להגשה הסופית.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">✍️</span>
+      <h3>כתיבה אקדמית</h3>
+      <p>עבודות סמינריוניות, תזות, דיסרטציות, מאמרים מדעיים — כתיבה ברמה גבוהה בכל דיסציפלינה.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📝</span>
+      <h3>עריכה לשונית</h3>
+      <p>עריכה מקצועית של טקסטים אקדמיים — תיקון שגיאות, שיפור סגנון ובהירות הכתיבה.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌐</span>
+      <h3>תרגום</h3>
+      <p>תרגום מדויק ומקצועי של מסמכים אקדמיים עברית-אנגלית ואנגלית-עברית.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📊</span>
+      <h3>סטטיסטיקה</h3>
+      <p>ניתוח נתונים סטטיסטי, SPSS, פרשנות תוצאות והכנת פרק המתודולוגיה.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🎓</span>
+      <h3>הוראה פרטית</h3>
+      <p>שיעורים פרטיים בכתיבה אקדמית, שיטות מחקר, ומגוון מקצועות אקדמיים.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="padding-top:1rem;">
+  <div class="about-wrap">
+    <div>
+      <div class="about-card">
+        <div class="about-name">מתן לנדסמן</div>
+        <div class="about-title-role">מומחה לכתיבה אקדמית ועריכה מדעית</div>
+        <div class="about-tags">
+          <span class="tag">+14 שנה ניסיון</span>
+          <span class="tag">כל האוניברסיטאות</span>
+          <span class="tag">24/7 זמין</span>
+          <span class="tag">98% שביעות רצון</span>
+        </div>
+        <div class="contact-info-row">
+          <span>📱 <a href="tel:0522951553">052-2951553</a></span>
+          <span>✉️ <a href="mailto:mlandesman1@gmail.com">mlandesman1@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">אודותי</div>
+      <h2 class="section-title">הניסיון שמביא תוצאות</h2>
+      <div class="divider"></div>
+      <div class="about-text">
+        <p>עם למעלה מ-14 שנות ניסיון בעולם האקדמי, אני מתמחה בליווי סטודנטים וחוקרים בכל שלב של הכתיבה המדעית — מהרעיון הראשוני ועד להגשה הסופית.</p>
+        <p>עבדתי עם סטודנטים מכל האוניברסיטאות הגדולות בישראל, בתחומים מגוונים: חינוך, פסיכולוגיה, ניהול, משפטים, מדעי החברה ועוד.</p>
+        <p>הגישה שלי היא אישית ומותאמת — כל פרויקט מקבל תשומת לב מלאה, ואני מחויב לתוצאה שתעמוד בדרישות הגבוהות ביותר.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="section-tag">איך זה עובד</div>
+  <h2 class="section-title">תהליך פשוט ויעיל</h2>
+  <div class="divider"></div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>יצירת קשר</h4>
+      <p>שלח הודעה בוואטסאפ או במייל עם פרטי הפרויקט שלך</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>שיחת היכרות</h4>
+      <p>נדבר על הצרכים שלך, לוחות הזמנים והציפיות</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>עבודה מותאמת</h4>
+      <p>אני מתחיל לעבוד על הפרויקט עם עדכונים שוטפים</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>הגשה מוצלחת</h4>
+      <p>קבל עבודה מוגמרת ומוכנה להגשה, עם מחויבות לתיקונים</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-tag">מה אומרים הלקוחות</div>
+  <h2 class="section-title">המלצות</h2>
+  <div class="divider"></div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"מתן עזר לי לכתוב את הדיסרטציה שלי ברמה שאני לא חשבתי שאגיע אליה. מקצועי, זמין ומדויק. ממליצה בחום!"</p>
+      <div class="testi-author">ד"ר שירה כהן</div>
+      <div class="testi-role">בוגרת תואר שלישי, האוניברסיטה העברית</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"ניתוח הסטטיסטיקה שמתן עשה לי היה מדויק ומוסבר היטב. קיבלתי ציון 95 על הפרק. שירות מעולה!"</p>
+      <div class="testi-author">אור לוי</div>
+      <div class="testi-role">סטודנט לתואר שני, אוניברסיטת תל אביב</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"העריכה הלשונית שינתה לגמרי את הטקסט שלי — ברמה, בבהירות ובסגנון. זמין בכל שעה ומגיב מהר."</p>
+      <div class="testi-author">נועה מזרחי</div>
+      <div class="testi-role">תלמידת מחקר, אוניברסיטת בר-אילן</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM CTA SECTION -->
+<div class="form-section" id="contact">
+  <div style="max-width:580px;margin:0 auto;">
+    <div class="section-tag" style="text-align:center;">הצעד הבא שלך</div>
+    <h2>מלא פרטים — קבל הצעת מחיר תוך 24 שעות</h2>
+    <p>שאלון קצר של 4 שאלות. מתן יחזור אליך עם הצעה קונקרטית ומותאמת אישית.</p>
+    <a href="https://docs.google.com/forms/d/1l4F7jGzwtxaDgrUHcwOjLGVCWWAP_CWc9bsCJZM57YI/viewform" target="_blank" class="cta-form" style="font-size:1.1rem;padding:16px 36px;">
+      📋 למילוי השאלון — השאר פרטים עכשיו
+    </a>
+    <div class="form-trust">
+      <div class="form-trust-item"><span>⚡</span> חוזרים תוך 24 שעות</div>
+      <div class="form-trust-item"><span>🔒</span> פרטיות מלאה</div>
+      <div class="form-trust-item"><span>✅</span> ללא התחייבות</div>
+    </div>
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(212,175,80,0.12);">
+      <p style="font-size:0.82rem;color:rgba(232,224,208,0.4);margin-bottom:0.75rem;">או דברו איתי ישירות:</p>
+      <div class="hero-ctas" style="margin-bottom:0.5rem;">
+        <a href="https://wa.me/972522951553" target="_blank" class="cta-primary" style="font-size:0.9rem;padding:11px 22px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.541 5.873L.073 23.5a.5.5 0 0 0 .615.611l5.758-1.502A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.499-5.24-1.371l-.375-.216-3.887 1.014 1.035-3.77-.237-.39A9.942 9.942 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          וואטסאפ
+        </a>
+        <a href="mailto:mlandesman1@gmail.com" class="cta-secondary" style="font-size:0.9rem;padding:11px 22px;">מייל</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Acad<span>emics</span></a>
+  <div style="display:flex;gap:1.5rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap;">
+    <a href="#services" style="color:rgba(232,224,208,0.4);text-decoration:none;font-size:0.8rem;">שירותים</a>
+    <a href="#about" style="color:rgba(232,224,208,0.4);text-decoration:none;font-size:0.8rem;">אודות</a>
+    <a href="#testimonials" style="color:rgba(232,224,208,0.4);text-decoration:none;font-size:0.8rem;">המלצות</a>
+    <a href="#contact" style="color:rgba(232,224,208,0.4);text-decoration:none;font-size:0.8rem;">צור קשר</a>
+  </div>
+  <p>© 2025 Academics · מתן לנדסמן. כל הזכויות שמורות.</p>
+</footer>
+
+<!-- WA FLOAT BUTTON -->
+<a href="https://wa.me/972522951553" target="_blank" class="wa-float" title="שלח הודעה בוואטסאפ">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.14 1.541 5.873L.073 23.5a.5.5 0 0 0 .615.611l5.758-1.502A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.499-5.24-1.371l-.375-.216-3.887 1.014 1.035-3.77-.237-.39A9.942 9.942 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+</body>
+</html>
